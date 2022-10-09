@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                                         + "\n\nlongitude : " + locationBean.getLongitude()
                                         + "\n\ncountryName : " + locationBean.getCountryName()
                                         + "\n\ncountryCode : " + locationBean.getCountryCode()
+                                        + "\n\ngetAddress : " + locationBean.getAddress()
 
                                 );
                             }

@@ -99,16 +99,15 @@ public class LocationUtil {
     }
 
     public static void getAddress(double latitude, double longitude, final ICallback<LocationBean> callback) {
-        Geocoder geocoder = new Geocoder(CCApplication.getInstance(), Locale.ENGLISH);
+        Geocoder geocoder = new Geocoder(CCApplication.getInstance(), Locale.SIMPLIFIED_CHINESE);
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
             Address address = addresses != null && addresses.size() > 0 ? addresses.get(0) : null;
             if (address != null) {
                 String countryName = address.getCountryName();
-                String countryCode = address.getCountryCode();
-                Log.i(TAG, "countryName : " + countryName + "  countryCode : " + countryCode);
+                String adminArea = address.getAdminArea();
                 if (callback != null) {
-                    callback.onResult(new LocationBean(latitude, longitude, countryName, countryCode, address.toString()));
+                    callback.onResult(new LocationBean(latitude, longitude, countryName, adminArea, address.toString()));
                 }
             } else {
                 if (callback != null) {
